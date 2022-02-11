@@ -1,6 +1,11 @@
 #pragma once
 
-template<typename T>
+
+
+
+
+
+template<typename Key, typename Value>
 class Dictionary
 {
 public:
@@ -18,74 +23,81 @@ public:
     const Dictionary<typename Key, typename Value>& operator =(const Dictionary<typename Key, typename Value> other);
 
 private:
+    struct Item
+    {
+        Key itemKey;
+        Value itemValue;
+    };
+
     Item<typename Key, typename Value>* m_items = nullptr;
     int m_count = 0;
 
+    
 };
 
-template<typename T>
-inline Dictionary<T>::Dictionary()
+template<typename Key, typename Value>
+inline Dictionary<Key, Value>::Dictionary()
 {
 }
 
-template<typename T>
-inline Dictionary<T>::Dictionary(const Dictionary<typename Key, typename Value>& other)
+template<typename Key, typename Value>
+inline Dictionary<Key, Value>::Dictionary(const Dictionary<typename Key, typename Value>& other)
 {
 }
 
-template<typename T>
-inline Dictionary<T>::~Dictionary()
+template<typename Key, typename Value>
+inline Dictionary<Key, Value>::~Dictionary()
 {
 }
 
-template<typename T>
-inline void Dictionary<T>::clear()
+template<typename Key, typename Value>
+inline void Dictionary<Key, Value>::clear()
 {
 }
 
-template<typename T>
-inline bool const Dictionary<T>::containtsKey(const typename Key object)
+template<typename Key, typename Value>
+inline bool const Dictionary<Key, Value>::containtsKey(const typename Key object)
 {
-    return NULL;
+    return;
 }
 
-template<typename T>
-inline bool const Dictionary<T>::containsValue(const typename Value object)
+template<typename Key, typename Value>
+inline bool const Dictionary<Key, Value>::containsValue(const typename Value object)
 {
-    return NULL;
+    return;
 }
 
-template<typename T>
-inline bool const Dictionary<T>::tryGetValue(const typename Key key, const typename Value& value)
+template<typename Key, typename Value>
+inline bool const Dictionary<Key, Value>::tryGetValue(const typename Key key, const typename Value& value)
 {
-    return NULL;
+    return;
 }
 
-template<typename T>
-inline void Dictionary<T>::addItem(const typename Key key, const typename Value& value)
+template<typename Key, typename Value>
+inline void Dictionary<Key, Value>::addItem(const typename Key key, const typename Value& value)
 {
 }
 
-template<typename T>
-inline bool Dictionary<T>::remove(const typename Key key)
-{
-    return false;
-}
-
-template<typename T>
-inline bool Dictionary<T>::remove(const typename Key key, typename Value& value)
+template<typename Key, typename Value>
+inline bool Dictionary<Key, Value>::remove(const typename Key key)
 {
     return false;
 }
 
-template<typename T>
-inline int const Dictionary<T>::getCount()
+template<typename Key, typename Value>
+inline bool Dictionary<Key, Value>::remove(const typename Key key, typename Value& value)
 {
-    return NULL;
+    return false;
 }
 
-template<typename T>
-inline const Dictionary<typename Key, typename Value>& Dictionary<T>::operator=(const Dictionary<typename Key, typename Value> other)
+template<typename Key, typename Value>
+inline int const Dictionary<Key, Value>::getCount()
+{
+    return;
+}
+
+template<typename Key, typename Value>
+inline const Dictionary<typename Key, typename Value>& Dictionary<Key, Value>::operator=(const Dictionary<typename Key, typename Value> other)
 {
     // TODO: insert return statement here
 }
