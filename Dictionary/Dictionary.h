@@ -25,11 +25,12 @@ public:
 private:
     struct Item
     {
+    public:
         Key itemKey;
         Value itemValue;
     };
 
-    Item<typename Key, typename Value>* m_items = nullptr;
+    Item* m_items = nullptr;
     int m_count = 0;
 
     
@@ -38,11 +39,15 @@ private:
 template<typename Key, typename Value>
 inline Dictionary<Key, Value>::Dictionary()
 {
+    m_items = nullptr;
+    m_count = 0;
 }
 
 template<typename Key, typename Value>
 inline Dictionary<Key, Value>::Dictionary(const Dictionary<typename Key, typename Value>& other)
 {
+    m_items = other.m_items;
+    m_count = other.m_count;
 }
 
 template<typename Key, typename Value>
@@ -53,24 +58,46 @@ inline Dictionary<Key, Value>::~Dictionary()
 template<typename Key, typename Value>
 inline void Dictionary<Key, Value>::clear()
 {
+    delete m_items;
+    m_count = 0;
 }
 
 template<typename Key, typename Value>
 inline bool const Dictionary<Key, Value>::containtsKey(const typename Key object)
 {
-    return;
+    for (int i = 0; i < getCount(); i++)
+    {
+        if (m_items[i].itemKey == object)
+            return true;
+    }
+    return false;
 }
 
 template<typename Key, typename Value>
 inline bool const Dictionary<Key, Value>::containsValue(const typename Value object)
 {
-    return;
+    for (int i = 0; i < getCount(); i++)
+    {
+        if (m_items[i].itemValue == object)
+            return true;
+    }
+    return false;
 }
 
 template<typename Key, typename Value>
 inline bool const Dictionary<Key, Value>::tryGetValue(const typename Key key, const typename Value& value)
 {
-    return;
+    for (int i = 0; i < getCount(); i++)
+    {
+        if (m_items[i].itemKey == key)
+        {
+          
+           
+            return true;
+        }
+            
+    }
+    return false;
 }
 
 template<typename Key, typename Value>
