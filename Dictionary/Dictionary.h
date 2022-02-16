@@ -5,29 +5,29 @@
 
 
 
-template<typename Key, typename Value>
+template<typename TKey, typename TValue>
 class Dictionary
 {
 public:
-    Dictionary<typename Key, typename Value>();
-    Dictionary<typename Key, typename Value>(const Dictionary<typename Key, typename Value>& other);
-    ~Dictionary<typename Key, typename Value>();
+    Dictionary<TKey, TValue>();
+    Dictionary<TKey, TValue>(const Dictionary<TKey, TValue>& other);
+    ~Dictionary<TKey, TValue>();
     void clear();
-    bool const containtsKey(const typename Key object);
-    bool const containsValue(const typename Value object);
-    bool const tryGetValue(const typename Key key, const typename Value& value);
-    void addItem(const typename Key key, const typename Value& value);
-    bool remove(const typename Key key);
-    bool remove(const typename Key key, typename Value& value);
+    bool const containtsKey(const TKey object);
+    bool const containsValue(const TValue object);
+    bool const tryGetValue(const TKey key, const TValue& value);
+    void addItem(const TKey key, const TValue& value);
+    bool remove(const TKey key);
+    bool remove(const TKey key, TValue& value);
     int const getCount();
-    const Dictionary<typename Key, typename Value>& operator =(const Dictionary<typename Key, typename Value> other);
+    const Dictionary<TKey, TValue>& operator =(const Dictionary<TKey, TValue> other);
 
 private:
     struct Item
     {
     public:
-        Key itemKey;
-        Value itemValue;
+        TKey itemKey;
+        TValue itemValue;
     };
 
     Item* m_items = nullptr;
@@ -36,34 +36,34 @@ private:
     
 };
 
-template<typename Key, typename Value>
-inline Dictionary<Key, Value>::Dictionary()
+template<typename TKey, typename TValue>
+inline Dictionary<TKey, TValue>::Dictionary()
 {
     m_items = nullptr;
     m_count = 0;
 }
 
-template<typename Key, typename Value>
-inline Dictionary<Key, Value>::Dictionary(const Dictionary<typename Key, typename Value>& other)
+template<typename TKey, typename TValue>
+inline Dictionary<TKey, TValue>::Dictionary(const Dictionary<TKey, TValue>& other)
 {
     m_items = other.m_items;
     m_count = other.m_count;
 }
 
-template<typename Key, typename Value>
-inline Dictionary<Key, Value>::~Dictionary()
+template<typename TKey, typename TValue>
+inline Dictionary<TKey, TValue>::~Dictionary()
 {
 }
 
-template<typename Key, typename Value>
-inline void Dictionary<Key, Value>::clear()
+template<typename TKey, typename TValue>
+inline void Dictionary<TKey, TValue>::clear()
 {
     delete m_items;
     m_count = 0;
 }
 
-template<typename Key, typename Value>
-inline bool const Dictionary<Key, Value>::containtsKey(const typename Key object)
+template<typename TKey, typename TValue>
+inline bool const Dictionary<TKey, TValue>::containtsKey(const TKey object)
 {
     for (int i = 0; i < getCount(); i++)
     {
@@ -73,8 +73,8 @@ inline bool const Dictionary<Key, Value>::containtsKey(const typename Key object
     return false;
 }
 
-template<typename Key, typename Value>
-inline bool const Dictionary<Key, Value>::containsValue(const typename Value object)
+template<typename TKey, typename TValue>
+inline bool const Dictionary<TKey, TValue>::containsValue(const TValue object)
 {
     for (int i = 0; i < getCount(); i++)
     {
@@ -84,15 +84,14 @@ inline bool const Dictionary<Key, Value>::containsValue(const typename Value obj
     return false;
 }
 
-template<typename Key, typename Value>
-inline bool const Dictionary<Key, Value>::tryGetValue(const typename Key key, const typename Value& value)
+template<typename TKey, typename TValue>
+inline bool const Dictionary<TKey, TValue>::tryGetValue(const TKey key, const TValue& value)
 {
     for (int i = 0; i < getCount(); i++)
     {
         if (m_items[i].itemKey == key)
         {
-          
-           
+            value = m_items[i].itemValue;
             return true;
         }
             
@@ -100,31 +99,31 @@ inline bool const Dictionary<Key, Value>::tryGetValue(const typename Key key, co
     return false;
 }
 
-template<typename Key, typename Value>
-inline void Dictionary<Key, Value>::addItem(const typename Key key, const typename Value& value)
+template<typename TKey, typename TValue>
+inline void Dictionary<TKey, TValue>::addItem(const TKey key, const TValue& value)
 {
 }
 
-template<typename Key, typename Value>
-inline bool Dictionary<Key, Value>::remove(const typename Key key)
-{
-    return false;
-}
-
-template<typename Key, typename Value>
-inline bool Dictionary<Key, Value>::remove(const typename Key key, typename Value& value)
+template<typename TKey, typename TValue>
+inline bool Dictionary<TKey, TValue>::remove(const TKey key)
 {
     return false;
 }
 
-template<typename Key, typename Value>
-inline int const Dictionary<Key, Value>::getCount()
+template<typename TKey, typename TValue>
+inline bool Dictionary<TKey, TValue>::remove(const TKey key, TValue& value)
+{
+    return false;
+}
+
+template<typename TKey, typename TValue>
+inline int const Dictionary<TKey, TValue>::getCount()
 {
     return;
 }
 
-template<typename Key, typename Value>
-inline const Dictionary<typename Key, typename Value>& Dictionary<Key, Value>::operator=(const Dictionary<typename Key, typename Value> other)
+template<typename TKey, typename TValue>
+inline const Dictionary<TKey, TValue>& Dictionary<TKey, TValue>::operator=(const Dictionary<TKey, TValue> other)
 {
     // TODO: insert return statement here
 }
